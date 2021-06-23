@@ -56,7 +56,9 @@
       </VBox>
       <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="4">
          <children>
-            <Button fx:id="start" mnemonicParsing="false" onAction="#startMedia" prefHeight="23.0" prefWidth="80.0" text="start" />
+            <Button fx:id="start" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#startVideo" prefHeight="23.0" prefWidth="34.0" text=" ▶" />
+            <Button fx:id="pause" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#pauseVideo" prefHeight="23.0" prefWidth="34.0" text="||" />
+            <Button fx:id="stop" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#stopVideo" prefHeight="23.0" prefWidth="34.0" text=" ∎" />
             <Slider fx:id="sltime" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="14.0" prefWidth="292.0">
                <HBox.margin>
                   <Insets left="10.0" right="5.0" />

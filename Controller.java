@@ -51,6 +51,16 @@ public class Controller {
 
     @FXML
     public void initialize() {
+        path = System.getProperty("user.dir");
+        dirName.setText("Directory: " + path);
+        dir = new File(path);
+        files = dir.list();
+        lstDir.getItems().clear();
+        for (String file : files) {
+            if (check(file)){
+                lstDir.getItems().add(file);
+            }
+        }
     }
 
     @FXML
@@ -83,7 +93,7 @@ public class Controller {
         sltime.setValue(0);
         slsound.setValue(100);
         String filename = path + "\\" + lstDir.getSelectionModel().getSelectedItem();
-        start.setText("start");
+        //start.setText("start");
         showName.setText((String) lstDir.getSelectionModel().getSelectedItem());
         Media pick = new Media(new File(filename).toURI().toString());
         player = new MediaPlayer(pick);
@@ -123,22 +133,6 @@ public class Controller {
             @Override
             public void changed(ObservableValue<? extends Duration> observableValue, Duration duration, Duration t1) {
                 updateValues();
-            }
-        });
-
-        player.setOnPlaying(new Runnable() {
-            public void run() {
-                start.setText("pause");
-            }
-        });
-        player.setOnPaused(new Runnable() {
-            public void run() {
-                start.setText("continue");
-            }
-        });
-        player.setOnEndOfMedia(new Runnable() {
-            public void run() {
-                start.setText("replay");
             }
         });
         view.setPreserveRatio(true);
@@ -221,5 +215,20 @@ public class Controller {
                         elapsedSeconds);
             }
         }
+    }
+
+    @FXML
+    public void startVideo(ActionEvent actionEvent) {
+        player.play();
+    }
+
+    @FXML
+    public void pauseVideo(ActionEvent actionEvent) {
+        player.pause();
+    }
+
+    @FXML
+    public void stopVideo(ActionEvent actionEvent) {
+        player.stop();
     }
 }
